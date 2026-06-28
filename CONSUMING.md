@@ -81,32 +81,37 @@ BiglerNet red is `oklch(52% 0.21 23)` — lightness 52%, intensity 21%, hue angl
 
 Add `class="theme-dark"` to the `<body>` or toggle it with JavaScript. The `dark.css` file overrides the same tokens with dark backgrounds and light text.
 
-### 4. Consuming via npm — GitHub Packages (internal use)
+### 4. Consuming via npm (for projects that use npm)
 
-All BiglerNet products use [GitHub Packages](https://github.com/features/packages) as our private package registry.
+> BiglerNet products use GitHub Packages as the internal package registry.
+> Public projects can also install from the public npm registry.
+
+**GitHub Packages (internal products)**
+
+Every BiglerNet product that consumes `@biglernet/*` packages needs an `.npmrc` in its root:
 
 ```bash
-# In any BiglerNet product, create or append to .npmrc:
+# Create or update .npmrc in the consuming product
 echo "@biglernet:registry=https://npm.pkg.github.com" >> .npmrc
+```
 
-# Install:
+Then install normally:
+
+```bash
 npm install @biglernet/design-tokens
 ```
+
+The `.npmrc` tells npm to route all `@biglernet` scoped packages to GitHub Packages instead of the public registry.
+
+**npmjs.org (public projects)**
+
+```bash
+npm install @biglernet/design-tokens
+```
+
+No registry configuration needed.
 
 Then reference the CSS files from `node_modules/@biglernet/design-tokens/dist/tokens/`.
-
-> The `.npmrc` file authenticates automatically in CI/CD (via `GITHUB_TOKEN`).
-> For local development, you may need to run `npm login --registry=https://npm.pkg.github.com` with a GitHub PAT that has `read:packages` scope.
-
-### 5. Consuming via npm — npmjs.org (public, not for internal products)
-
-For public/consumer projects that want to use this design system:
-
-```bash
-npm install @biglernet/design-tokens
-```
-
-No registry configuration needed — the package is published to the public npm registry.
 
 ---
 
