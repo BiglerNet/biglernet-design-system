@@ -1,0 +1,43 @@
+{
+  "name": "@biglernet/design-tokens",
+  "version": "0.1.0",
+  "description": "BiglerNet design tokens, theme files, and component library for consistent cross-product UI.",
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "css-tokens",
+    "biglernet",
+    "ui-components"
+  ],
+  "main": "dist/tokens/light.css",
+  "style": "dist/tokens/light.css",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "publish:github": "npm run build && npm publish --registry https://npm.pkg.github.com",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BiglerNet/biglernet-design-system",
+    "directory": "packages/design-tokens"
+  },
+  "author": "BiglerNet Team",
+  "license": "MIT",
+  "publishConfig": {
+    "@biglernet:registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.5.0",
+    "vitepress": "^1.6.4"
+  }
+}
