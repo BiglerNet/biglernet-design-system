@@ -129,6 +129,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 .demo > * { font-family: var(--font-body); font-size: 14px; }
 
+/* Reset VitePress .vp-doc list styles that bleed into demo blocks */
+.demo ul,
+.demo ol {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.demo li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.demo li::before,
+.demo li::marker {
+  content: none !important;
+  display: none !important;
+}
+
 /* ===== Token visuals ===== */
 .color-swatch-block {
   display: flex;
