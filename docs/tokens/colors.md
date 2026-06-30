@@ -1,63 +1,92 @@
----
-aside:
-  - text: Colors
-    items:
-      - { text: 'Accent Colors', link: '/tokens/colors#accent' }
-      - { text: 'Semantic Colors', link: '/tokens/colors#semantic' }
-      - { text: 'Dark Mode', link: '/tokens/colors#dark' }
----
-
 # Colors
 
 All colors use OKLCH format. Each token maps to a semantic name, not a visual property.
 
 ## Accent Colors
 
-The BiglerNet red accent is used sparingly — at most twice per screen (primary CTA + one status indicator).
-
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `--accent-primary` | `oklch(52% 0.21 23)` | (same) | Primary buttons, active states |
-| `--accent-secondary` | `oklch(42% 0.18 23)` | (same) | Hover states |
-| `--accent-light` | `oklch(90% 0.06 23)` | (same) | Badge fills, pill backgrounds |
-
-### Usage
-
-```html
-<button class="ds-btn ds-btn-primary">Primary</button>
-```
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:24px 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(52% 0.21 23);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">BiglerNet Red</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--accent-primary: oklch(52% 0.21 23)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(42% 0.18 23);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">Red (hover)</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--accent-secondary: oklch(42% 0.18 23)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(90% 0.06 23);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">Red (soft fill)</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--accent-light: oklch(90% 0.06 23)</div>
+  </div>
+</div>
 
 ## Semantic Colors
 
-Named for meaning, not visual appearance. A semantic color represents a state rather than a specific hue.
-
-| Token | Light | Usage |
-|---|---|---|
-| `--success` | `oklch(65% 0.14 150)` (green) | Success states |
-| `--warn` | `oklch(70% 0.16 75)` (amber) | Warning states |
-| `--danger` | `oklch(55% 0.18 23)` (red) | Errors, destructive actions |
-| `--info` | `oklch(62% 0.15 230)` (blue) | Informational states |
-
-## Dark Mode
-
-Dark mode uses semi-transparent white borders rather than dark values. Pure black (#000) and pure white (#fff) are avoided for eye comfort.
-
-| Token | Light | Dark |
-|---|---|---|
-| `--bg` | `oklch(99% 0.002 240)` | `oklch(14% 0.01 250)` |
-| `--surface` | `oklch(100% 0 0)` | `oklch(19% 0.01 250)` |
-| `--fg` | `oklch(18% 0.012 250)` | `oklch(94% 0.01 240)` |
-| `--muted` | `oklch(54% 0.012 250)` | `oklch(56% 0.01 240)` |
-| `--border` | `oklch(90% 0.006 250)` | `rgba(255, 255, 255, 0.08)` |
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:24px 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(65% 0.14 150);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">Success</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--success: oklch(65% 0.14 150)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(70% 0.16 75);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">Warning</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--warn: oklch(70% 0.16 75)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(55% 0.18 23);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">Danger</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--danger: oklch(55% 0.18 23)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(62% 0.15 230);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">Info</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">--info: oklch(62% 0.15 230)</div>
+  </div>
+</div>
 
 ## Neutrals
 
-| Token | Light | Dark | Usage |
-|---|---|---|---|
-| `--bg` | `oklch(99% 0.002 240)` | `oklch(14% 0.01 250)` | Page canvas |
-| `--surface` | `oklch(100% 0 0)` | `oklch(19% 0.01 250)` | Cards, panels |
-| `--fg` | `oklch(18% 0.012 250)` | `oklch(94% 0.01 240)` | Primary text |
-| `--muted` | `oklch(54% 0.012 250)` | `oklch(56% 0.01 240)` | Secondary text, labels |
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:24px 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(99% 0.002 240);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">--bg</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">Page canvas: oklch(99% 0.002 240)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(100% 0 0);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">--surface</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">Cards, panels: oklch(100% 0 0)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(18% 0.012 250);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">--fg</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">Primary text: oklch(18% 0.012 250)</div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0 0 0;">
+  <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--border);background:oklch(54% 0.012 250);"></div>
+  <div>
+    <div style="font-size:14px;font-weight:600;color:var(--fg);">--muted</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted);">Secondary text: oklch(54% 0.012 250)</div>
+  </div>
+</div>
 
 ## Rules
 

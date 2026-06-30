@@ -1,0 +1,193 @@
+/*
+  BiglerNet — VitePress style overrides
+  Imports design tokens and applies BiglerNet branding to every VitePress page.
+*/
+
+/* ===== Imported design tokens ===== */
+@import '../../../tokens/light.css';
+@import '../../../dist/components/components.css';
+
+/* ===== Dark mode — map html.dark to BiglerNet dark tokens ===== */
+html.dark {
+  --bg:            oklch(14% 0.01 250);
+  --surface:       oklch(19% 0.01 250);
+  --surface-hover: oklch(24% 0.01 250);
+  --fg:            oklch(94% 0.01 240);
+  --fg-light:      oklch(80% 0.008 240);
+  --muted:         oklch(56% 0.01 240);
+  --placeholder:   oklch(40% 0.006 240);
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --shadow-sm:     0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md:     0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg:     0 12px 32px rgba(0,0,0,0.5);
+  --shadow-focus:  0 0 0 3px oklch(30% 0.04 260);
+}
+
+/* ===== VitePress brand tokens ===== */
+:root {
+  --vp-c-brand-1:      oklch(52% 0.21 23);
+  --vp-c-brand-2:      oklch(46% 0.20 23);
+  --vp-c-brand-3:      oklch(42% 0.18 23);
+  --vp-c-brand-soft:   oklch(90% 0.06 23);
+  --vp-layout-max-width: 1200px;
+  --vp-font-family-base: var(--font-body);
+  --vp-font-family-mono: var(--font-mono);
+  /* Kill the default hero gradient — use solid BiglerNet red instead */
+  --vp-home-hero-name-color: oklch(52% 0.21 23);
+  --vp-home-hero-name-background: none;
+}
+
+html.dark {
+  --vp-c-bg:        var(--bg);
+  --vp-c-bg-soft:   var(--surface);
+  --vp-c-bg-mute:   var(--surface-hover);
+  --vp-c-text-1:    var(--fg);
+  --vp-c-text-2:    var(--muted);
+  --vp-c-divider:   var(--border);
+}
+
+/* ===== Base ===== */
+body {
+  font-family: var(--font-body);
+  color: var(--fg);
+  background: var(--bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--fg);
+}
+
+/* ===== Navigation ===== */
+.VPNavBar {
+  background: var(--surface) !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.VPSidebar {
+  background: var(--surface) !important;
+}
+
+/* ===== Home hero ===== */
+.VPHero {
+  padding-block: var(--space-3xl) !important;
+}
+
+/* VitePress 1.x uses .name (big title) and .text (subtitle) — not .title */
+.VPHero .name {
+  font-family: var(--font-display) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: oklch(52% 0.21 23) !important;
+  color: oklch(52% 0.21 23) !important;
+}
+
+.VPHero .text {
+  font-family: var(--font-display) !important;
+  color: var(--fg) !important;
+}
+
+.VPHero .tagline {
+  color: var(--muted) !important;
+}
+
+/* ===== Home features ===== */
+.VPFeature {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: border-color var(--transition-fast) !important;
+}
+.VPFeature:hover {
+  border-color: var(--accent-primary) !important;
+}
+
+.VPFeature .title {
+  font-family: var(--font-display) !important;
+  color: var(--fg) !important;
+}
+
+.VPFeature .details {
+  color: var(--muted) !important;
+}
+
+/* ===== Doc content ===== */
+.VPDoc .content-container {
+  color: var(--fg);
+}
+
+/* ===== Demo container ===== */
+.demo {
+  margin: var(--space-lg) 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+.demo > * { font-family: var(--font-body); font-size: 14px; }
+
+/* ===== Token visuals ===== */
+.color-swatch-block {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.color-swatch-block:last-child { border-bottom: none; }
+.color-swatch-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.color-swatch-meta { flex: 1; }
+.color-swatch-name {
+  font-size: 14px;
+  font-weight: 590;
+  color: var(--fg);
+}
+.color-swatch-token {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.spacing-visual-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 70px;
+}
+
+.type-scale-row {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: var(--space-lg);
+  align-items: center;
+}
+.type-scale-name {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.type-scale-token {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.type-scale-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}

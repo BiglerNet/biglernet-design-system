@@ -1,11 +1,27 @@
-# Border Radius
+# Radius
 
-| Token | Value | Use for |
-|---|---|---|
-| `--radius-sm` | 4px | Inline elements, badges |
-| `--radius-md` | 8px | Buttons, inputs, small cards |
-| `--radius-lg` | 12px | Cards, panels, overlays |
-| `--radius-xl` | 16px | Large containers, dialogs |
+Four levels. Small for inline elements, large for interactive surfaces.
+
+<div class="demo">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:24px;padding:32px;">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <div style="width:64px;height:64px;background:var(--accent-primary);border-radius:4px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">4px<br>radius-sm</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <div style="width:64px;height:64px;background:var(--accent-primary);border-radius:8px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">8px<br>radius-md</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <div style="width:64px;height:64px;background:var(--accent-primary);border-radius:12px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">12px<br>radius-lg</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <div style="width:64px;height:64px;background:var(--accent-primary);border-radius:16px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">16px<br>radius-xl</div>
+  </div>
+</div>
+</div>
 
 ## Usage
 
@@ -18,6 +34,6 @@
 
 ## Rules
 
-- Use smaller radii for inline elements.
-- Use larger radii for interactive surfaces.
-- Never hardcode a radius value.
+1. Use smaller radii for inline elements.
+2. Use larger radii for interactive surfaces.
+3. Never hardcode a radius value.

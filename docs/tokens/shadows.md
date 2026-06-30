@@ -1,14 +1,23 @@
 # Shadows
 
-Only use on elevated surfaces (modals, dropdowns, overlays). Not on page-level cards.
+Only use on elevated surfaces: modals, dropdowns, overlays. Not on page cards.
 
-| Token | Value | Use for |
-|---|---|---|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.06)` | Inline cards, dropdowns |
-| `--shadow-md` | `0 4px 12px rgba(0,0,0,0.08)` | Elevated cards, modals |
-| `--shadow-lg` | `0 12px 32px rgba(0,0,0,0.12)` | Overlays, large modals |
-
-Dark mode shadows use higher opacity (0.3–0.5 vs 0.06–0.12) because dark backgrounds suppress subtle shadows.
+<div class="demo">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:32px;">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:24px;box-shadow:var(--shadow-sm);">
+    <div style="width:64px;height:64px;background:var(--surface);border-radius:8px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">shadow-sm</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:24px;box-shadow:var(--shadow-md);">
+    <div style="width:64px;height:64px;background:var(--surface);border-radius:8px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">shadow-md</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:24px;box-shadow:var(--shadow-lg);">
+    <div style="width:64px;height:64px;background:var(--surface);border-radius:8px;"></div>
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--muted);text-align:center;">shadow-lg</div>
+  </div>
+</div>
+</div>
 
 ## Usage
 
@@ -20,6 +29,6 @@ Dark mode shadows use higher opacity (0.3–0.5 vs 0.06–0.12) because dark bac
 
 ## Rules
 
-- Use hairline borders for structure, shadows only for elevation and interaction hints.
-- Never stack shadows on page-level cards.
-- Use `--shadow-focus: 0 0 0 3px var(--accent-light)` for focus rings.
+1. Use hairline borders for structure, shadows only for elevation and interaction hints.
+2. Never stack shadows on page-level cards.
+3. Use `--shadow-focus` for focus indicators.
