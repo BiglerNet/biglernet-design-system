@@ -53,13 +53,13 @@ Then add `class="theme-dark"` to the `<body>` element toggling it is as simple a
 // package.json
 {
   "dependencies": {
-    "@biglernet/design-tokens": "git+https://github.com/biglernet/design-system"
+    "@biglernet/design-tokens": "git+https://github.com/BiglerNet/biglernet-design-system"
   }
 }
 ```
 
 ```bash
-npm install biglernet/design-system#main
+npm install BiglerNet/biglernet-design-system#main
 ```
 
 Then reference the CSS files from `node_modules/@biglernet/design-tokens/dist/tokens/`.

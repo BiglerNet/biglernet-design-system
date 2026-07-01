@@ -53,7 +53,7 @@ export default defineConfig({
       ],
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/biglernet/design-system' },
+      { icon: 'github', link: 'https://github.com/BiglerNet/biglernet-design-system' },
     ],
     darkModeSwitchLabel: 'Appearance',
     dark: 'dark',
