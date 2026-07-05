@@ -41,7 +41,7 @@
       --font-mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
     }
 
-    .theme-dark {
+    .dark {
       --bg: oklch(14% 0.01 250);
       --surface: oklch(19% 0.01 250);
       --fg: oklch(94% 0.01 240);
@@ -1292,8 +1292,8 @@
         </div>
 
         <div class="comp-card" style="margin-top: var(--space-lg);">
-          <div class="comp-card-label">Dark mode — override in a .theme-dark class</div>
-          <pre style="font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--fg); overflow-x: auto; white-space: pre; background: var(--bg); padding: var(--space-lg); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);"><code>.theme-dark {
+          <div class="comp-card-label">Dark mode — override in a .dark class</div>
+          <pre style="font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--fg); overflow-x: auto; white-space: pre; background: var(--bg); padding: var(--space-lg); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);"><code>.dark {
   --bg:      oklch(14% 0.01 250);
   --surface: oklch(19% 0.01 250);
   --fg:      oklch(94% 0.01 240);
@@ -1335,11 +1335,11 @@ h1 {
     // Theme toggle
     function setTheme(mode) {
       if (mode === 'dark') {
-        document.body.classList.add('theme-dark');
+        document.body.classList.add('dark');
         document.getElementById('theme-dark').classList.add('active');
         document.getElementById('theme-light').classList.remove('active');
       } else {
-        document.body.classList.remove('theme-dark');
+        document.body.classList.remove('dark');
         document.getElementById('theme-light').classList.add('active');
         document.getElementById('theme-dark').classList.remove('active');
       }
