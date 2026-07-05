@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-The design system is **a single CSS file** you drop into any project. After that, every button, card, input, and table looks like every other BiglerNet product.
+The design system is **two CSS files** you drop into any project. After that, every button, card, input, and table looks like every other BiglerNet product.
 
 ```html
 <link rel="stylesheet" href="./tokens/light.css">
@@ -83,10 +83,7 @@ Add `class="theme-dark"` to the `<body>` or toggle it with JavaScript. The `dark
 
 ### 4. Consuming via npm (for projects that use npm)
 
-> BiglerNet products use GitHub Packages as the internal package registry.
-> Public projects can also install from the public npm registry.
-
-**GitHub Packages (internal products)**
+> BiglerNet products use GitHub Packages as the package registry.
 
 Every BiglerNet product that consumes `@biglernet/*` packages needs an `.npmrc` in its root:
 
@@ -103,15 +100,16 @@ npm install @biglernet/design-tokens
 
 The `.npmrc` tells npm to route all `@biglernet` scoped packages to GitHub Packages instead of the public registry.
 
-**npmjs.org (public projects)**
+The single package ships both tokens and components:
 
-```bash
-npm install @biglernet/design-tokens
 ```
-
-No registry configuration needed.
-
-Then reference the CSS files from `node_modules/@biglernet/design-tokens/dist/tokens/`.
+node_modules/@biglernet/design-tokens/dist/
+├── tokens/
+│   ├── light.css
+│   └── dark.css
+└── components/
+    └── components.css
+```
 
 ---
 
