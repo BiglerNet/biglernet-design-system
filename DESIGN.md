@@ -1,234 +1,358 @@
+---
+version: alpha
+name: BiglerNet
+description: Technical, information-dense UI system for engineering and operations tools. Borders over shadows, a single red accent used sparingly, and monospace for data.
+colors:
+  primary: "oklch(52% 0.21 23)"
+  primary-hover: "oklch(42% 0.18 23)"
+  primary-container: "oklch(90% 0.06 23)"
+  on-primary: "#ffffff"
+  bg: "oklch(99% 0.002 240)"
+  surface: "oklch(100% 0 0)"
+  surface-hover: "oklch(99.5% 0.001 240)"
+  text: "oklch(18% 0.012 250)"
+  text-light: "oklch(65% 0.008 250)"
+  muted: "oklch(54% 0.012 250)"
+  placeholder: "oklch(80% 0.004 250)"
+  border: "oklch(90% 0.006 250)"
+  border-subtle: "oklch(95% 0.003 250)"
+  success: "oklch(65% 0.14 150)"
+  success-container: "oklch(92% 0.08 150)"
+  warning: "oklch(70% 0.16 75)"
+  warning-container: "oklch(94% 0.1 75)"
+  error: "oklch(55% 0.18 23)"
+  error-container: "oklch(94% 0.08 15)"
+  info: "oklch(62% 0.15 230)"
+  info-container: "oklch(92% 0.08 230)"
+typography:
+  display:
+    fontFamily: Inter
+    fontSize: 3rem
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: -0.02em
+  h1:
+    fontFamily: Inter
+    fontSize: 2rem
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: -0.02em
+  h2:
+    fontFamily: Inter
+    fontSize: 1.5rem
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: -0.01em
+  h3:
+    fontFamily: Inter
+    fontSize: 1.125rem
+    fontWeight: 590
+    lineHeight: 1.3
+  body:
+    fontFamily: system-ui
+    fontSize: 1.0625rem
+    fontWeight: 450
+    lineHeight: 1.6
+  body-sm:
+    fontFamily: system-ui
+    fontSize: 0.8125rem
+    fontWeight: 450
+    lineHeight: 1.5
+  caption:
+    fontFamily: IBM Plex Mono
+    fontSize: 0.75rem
+    fontWeight: 450
+    lineHeight: 1.4
+  label-caps:
+    fontFamily: system-ui
+    fontSize: 0.75rem
+    fontWeight: 600
+    lineHeight: 1.4
+    letterSpacing: 0.06em
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 12px
+  xl: 16px
+spacing:
+  xs: 4px
+  sm: 8px
+  md: 16px
+  lg: 24px
+  xl: 32px
+  2xl: 48px
+  3xl: 64px
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    typography: "{typography.label-caps}"
+    rounded: "{rounded.md}"
+    padding: 8px 24px
+  button-primary-hover:
+    backgroundColor: "{colors.primary-hover}"
+  button-secondary:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.md}"
+  button-secondary-hover:
+    backgroundColor: "{colors.surface-hover}"
+  button-ghost:
+    backgroundColor: transparent
+    textColor: "{colors.primary}"
+    rounded: "{rounded.md}"
+  button-ghost-hover:
+    backgroundColor: "{colors.primary-container}"
+  button-danger:
+    backgroundColor: "{colors.error}"
+    textColor: "{colors.on-primary}"
+    rounded: "{rounded.md}"
+  input:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.md}"
+    padding: 8px 16px
+  input-placeholder:
+    textColor: "{colors.placeholder}"
+  input-focus:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.text}"
+  input-error:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.error}"
+  badge-primary:
+    backgroundColor: "{colors.primary-container}"
+    textColor: "{colors.primary-hover}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.sm}"
+  badge-success:
+    backgroundColor: "{colors.success-container}"
+    textColor: "{colors.success}"
+    rounded: "{rounded.sm}"
+  badge-warning:
+    backgroundColor: "{colors.warning-container}"
+    textColor: "{colors.warning}"
+    rounded: "{rounded.sm}"
+  badge-error:
+    backgroundColor: "{colors.error-container}"
+    textColor: "{colors.error}"
+    rounded: "{rounded.sm}"
+  badge-info:
+    backgroundColor: "{colors.info-container}"
+    textColor: "{colors.info}"
+    rounded: "{rounded.sm}"
+  card:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.lg}"
+    padding: 32px
+  list-card-row:
+    backgroundColor: "{colors.surface}"
+  list-card-row-hover:
+    backgroundColor: "{colors.surface-hover}"
+  table-header:
+    textColor: "{colors.muted}"
+    typography: "{typography.label-caps}"
+  nav-bar:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.lg}"
+  nav-link:
+    textColor: "{colors.muted}"
+  nav-link-active:
+    textColor: "{colors.text}"
+  sidebar:
+    backgroundColor: "{colors.surface}"
+  tab-active:
+    textColor: "{colors.text}"
+  theme-bar:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.xl}"
+  toggle-track:
+    backgroundColor: "{colors.border}"
+  toggle-track-active:
+    backgroundColor: "{colors.primary}"
+---
+
 # BiglerNet Design System — Architecture & Rules
 
 > The "how we build" document. Read this before writing any new component or making any visual decision.
 
----
+## Overview
 
-## 1. System Philosophy
+BiglerNet builds SaaS products across multiple industry verticals for engineers and operators, not consumers. The visual posture is technical, direct, and product-led: information density over decoration, structure from borders rather than elevation, and a single confident red accent used sparingly. Nothing about the system should read as playful or luxury — every pixel should convey information.
 
-BiglerNet's products are technical tools for engineers and operators. The design system reflects that:
+Guiding principles:
 
-- **Information density** over decoration. Every pixel should convey information.
-- **Borders over shadows.** Structure from lines, not elevation. Shadows only for overlays/modals.
-- **One accent, used twice max.** BiglerNet red appears at most twice per screen (primary CTA + one state indicator).
-- **Tokens, not magic.** Every visual decision maps to a named token. No hardcoded values.
+- **Information density over decoration.** Every pixel should convey information.
+- **Borders over shadows.** Structure comes from lines, not elevation. Shadows are reserved for overlays and modals.
+- **One accent, used twice max.** BiglerNet red (`colors.primary`) appears at most twice per screen — one primary CTA plus one state indicator.
+- **Tokens, not magic.** Every visual decision maps to a named token. No hardcoded values in components.
 
----
+## Colors
 
-## 2. Design Tokens
+Colors are organized in four layers so it's always clear which layer a color belongs to.
 
-### 2.1 Colors
+| Layer | Share of a screen | Tokens |
+| --- | --- | --- |
+| **Neutrals** | 70–90% | `bg`, `surface`, `surface-hover`, `text`, `text-light`, `muted`, `placeholder`, `border`, `border-subtle` |
+| **Accent** (one) | 5–10% | `primary`, `primary-hover`, `primary-container`, `on-primary` |
+| **Semantic** | 0–5% | `success`, `success-container`, `warning`, `warning-container`, `error`, `error-container`, `info`, `info-container` |
 
-Colors are organized in 4 layers. This layered approach prevents visual chaos — you always know which layer a color belongs to.
+### Accent — BiglerNet Red
 
-| Layer | Share | Tokens |
-|---|---|---|
-| **Neutrals** | 70–90% | `--bg`, `--surface`, `--fg`, `--muted`, `--border` |
-| **Accent** (one) | 5–10% | `--accent-primary`, `--accent-secondary`, `--accent-light` |
-| **Semantic** | 0–5% | `--success`, `--warn`, `--danger`, `--info` |
-| **Effect** | <1% | Gradients, glows — rarely justified |
+`primary` (`oklch(52% 0.21 23)`, ≈ `#c23b3b`) is the sole accent across all products. It never competes with a second hue: `primary-hover` is a darker shade of the same red for hover/press/link states, and `primary-container` is a soft tint for pill fills and badge backgrounds.
 
-### 2.2 Typography
+### Neutrals
 
-Three-weight system: 450 (read), 590 (emphasize), 600 (announce). Never use weight 700+ unless you have a very good reason.
+`bg` is the page canvas, `surface` is cards/panels/inputs, `text` is headline/body copy, `muted` is secondary text (labels, timestamps, placeholders' neighbor copy), and `border`/`border-subtle` draw all dividers. All neutrals are near-white/near-black OKLCH values, not pure `#fff`/`#000` — this keeps large surfaces from vibrating and reads calmer under long viewing sessions.
 
-| Role | Font | Size | Weight | Line Height | Tracking |
-|---|---|---|---|---|---|
-| Display | Inter | 48–72px | 600–700 | 1.0–1.1 | `-0.02em` |
-| H1 | Inter | 32–48px | 600 | 1.2 | `-0.02em` |
-| H2 | Inter | 24–32px | 600 | 1.25 | `-0.01em` |
-| H3 | Inter | 20–24px | 590 | 1.3 | `-0.01em` |
-| Body | system-ui | 15–18px | 450 | 1.6 | `normal` |
-| Small | system-ui | 13–14px | 450 | 1.5 | `+0.01em` |
-| Caption | IBM Plex Mono | 11–12px | 400 | 1.4 | `normal` |
-| UI label | system-ui | 12–13px | 590–600 | 1.4 | `+0.06em` (ALL CAPS) |
+### Semantic
 
-### 2.3 Spacing
+`success`, `warning`, `error`, and `info` each pair with a `-container` tint for status badges and inline alerts. Semantic colors exist to communicate state, not to decorate — never use them for emphasis alone.
 
-All based on a 4px grid. Never use values outside this scale.
+### Dark mode
 
-| Token | Value | Use for |
-|---|---|---|
-| `--space-xs` | 4px | Tight gaps, icon spacing |
-| `--space-sm` | 8px | Button padding, small gaps |
-| `--space-md` | 16px | Card padding base |
-| `--space-lg` | 24px | Grid gutters, section spacing |
-| `--space-xl` | 32px | Layout sections |
-| `--space-2xl` | 48px | Hero spacing |
-| `--space-3xl` | 64px | Full-page section spacing |
+Dark mode is a **complete override**, not an inversion — activated by adding `.theme-dark` to `<body>` or `<html>` (see `tokens/dark.css`, loaded after `tokens/light.css`).
 
-### 2.4 Border Radius
+- `bg`/`surface` become near-black OKLCH values, not pure `#000` — pure black causes vibration and eye strain.
+- `border`/`border-subtle` become semi-transparent white (`rgba(255,255,255,0.08)` / `0.04`), not dark values — dark-on-dark borders are invisible at small sizes.
+- `text` becomes near-white, not pure `#fff`, for the same reason as `bg`.
+- Shadows increase in opacity (0.3–0.5 vs. 0.06–0.12 in light mode) because dark surfaces suppress subtle shadows.
+- The accent palette (`primary`/`primary-hover`/`primary-container`) is unchanged between themes.
 
-| Token | Value | Use for |
-|---|---|---|
-| `--radius-sm` | 4px | Inline elements, badges |
-| `--radius-md` | 8px | Buttons, inputs, small cards |
-| `--radius-lg` | 12px | Cards, panels, overlays |
-| `--radius-xl` | 16px | Large containers, dialogs |
+## Typography
 
-### 2.5 Shadows
+Three weights only: 450 (read), 590 (emphasize), 600 (announce). Avoid 700+ outside of large display text.
 
-Only use on elevated surfaces (modals, dropdowns, overlays). Not on page-level cards.
+| Token | Face | Size | Weight | Line height | Tracking | Usage |
+| --- | --- | --- | --- | --- | --- | --- |
+| `display` | Inter | 48px | 600 | 1.1 | `-0.02em` | Hero headlines |
+| `h1` | Inter | 32px | 600 | 1.2 | `-0.02em` | Section titles |
+| `h2` | Inter | 24px | 600 | 1.25 | `-0.01em` | Sub-section titles |
+| `h3` | Inter | 18px | 590 | 1.3 | normal | Card/panel titles |
+| `body` | system-ui | 17px | 450 | 1.6 | normal | Default body text |
+| `body-sm` | system-ui | 13px | 450 | 1.5 | normal | Secondary/small text |
+| `caption` | IBM Plex Mono | 12px | 450 | 1.4 | normal | Metadata, mono data |
+| `label-caps` | system-ui | 12px | 600 | 1.4 | `0.06em`, ALL CAPS | Table headers, nav group titles, UI labels |
 
-| Token | Value | Use for |
-|---|---|---|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.06)` | Inline cards, dropdowns |
-| `--shadow-md` | `0 4px 12px rgba(0,0,0,0.08)` | Elevated cards, modals |
-| `--shadow-lg` | `0 12px 32px rgba(0,0,0,0.12)` | Overlays, large modals |
+Font stacks:
 
-Dark mode shadows use higher opacity because dark backgrounds make subtle shadows invisible.
+- **Display:** `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif`
+- **Body:** `-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif`
+- **Mono:** `'IBM Plex Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace` — used for all IDs, hashes, timestamps, code, and tabular numeric data
 
----
+## Layout
 
-## 3. Layout Rules
+All spacing derives from a 4px grid. Never use values outside this scale.
 
-1. **Card-width content** — page content caps at 1200px for desktop readability.
-2. **Tablet-width grids** — content grid uses minmax(280px, 1fr) for responsive columns.
-3. **No row striping on tables** — use hairline borders between rows instead.
-4. **Asymmetric density** — alternate between dense (tables, forms) and breathing (headlines, quotes).
-5. **Mono columns for data** — IDs, hashes, numeric data always in monospace font with tabular-nums.
+| Token | Value | Usage |
+| --- | --- | --- |
+| `spacing.xs` | 4px | Tight gaps, icon spacing |
+| `spacing.sm` | 8px | Button padding, small gaps |
+| `spacing.md` | 16px | Card padding base |
+| `spacing.lg` | 24px | Grid gutters, section spacing |
+| `spacing.xl` | 32px | Layout sections |
+| `spacing.2xl` | 48px | Hero spacing |
+| `spacing.3xl` | 64px | Full-page section spacing |
 
----
+- Content areas cap at ~1200px for desktop readability; navigation stays full-width.
+- Alternate information-dense sections (tables, forms) with breathing sections (headlines, quotes) rather than uniform density throughout a page.
 
-## 4. Do's and Don'ts
+## Elevation & Depth
 
-### Do
+Shadows are only for elevated surfaces (modals, dropdowns, popovers, the floating theme bar) — never on page-level cards, which rely on a 1px border instead.
 
-- Use `var(--token-name)` everywhere — never hardcode colors or spacings
-- Use monospace font for IDs, hashes, timestamps, code
-- Keep backgrounds neutral (light: nearly white, dark: nearly black)
-- Use the red accent on primary CTAs and active states only
-- Use hairline borders for structure, shadows only for elevation/interaction hints
-- Include focus-visible outlines on all interactive elements
-- Use `letter-spacing` on ALL CAPS text (`+0.06em`) and negative tracking on large headings (`-0.02em`)
-- Test in both light and dark mode before shipping
+| Token | Value (light) | Value (dark) | Usage |
+| --- | --- | --- | --- |
+| `shadow-sm` | `0 1px 2px rgba(0,0,0,0.06)` | `0 1px 2px rgba(0,0,0,0.3)` | Inline cards, dropdowns |
+| `shadow-md` | `0 4px 12px rgba(0,0,0,0.08)` | `0 4px 12px rgba(0,0,0,0.4)` | Elevated cards, modals, theme bar |
+| `shadow-lg` | `0 12px 32px rgba(0,0,0,0.12)` | `0 12px 32px rgba(0,0,0,0.5)` | Overlays, large modals |
+| `shadow-focus` | `0 0 0 3px {colors.primary-container}` | `0 0 0 3px oklch(30% 0.04 260)` | Focus ring on inputs |
 
-### Don't
+Dark-mode shadows use higher opacity because dark backgrounds make subtle shadows invisible.
 
-- Hardcode any color value in component CSS (always use tokens)
-- Use red on more than 2 visible elements per screen
-- Add decorative gradients, patterned backgrounds, or illustration elements
-- Use warm beige, peach, or cream as page backgrounds
-- Stack more than 2 typefaces in any artifact
-- Use bold (700+) for body text — reserve for headlines only
-- Use `font-family: system-ui` alone on a heading
-- Use `text-align: justify` on body copy (creates rivers on the web)
-- Use `scrollIntoView` in embedded previews (breaks the iframe)
-- Put design system metadata (screen counts, viewport selectors, "demo only" labels) in product UI
-- Mix light and dark mode styles without explicit scope
+## Shapes
 
----
+Four border-radius levels — do not use arbitrary radii.
 
-## 5. Component Patterns
+| Token | Value | Usage |
+| --- | --- | --- |
+| `rounded.sm` | 4px | Inline elements, badges |
+| `rounded.md` | 8px | Buttons, inputs, small cards |
+| `rounded.lg` | 12px | Cards, panels, nav bar, sidebar edges |
+| `rounded.xl` | 16px | Large containers, dialogs, floating theme bar |
+
+## Components
 
 ### Buttons
 
-- Primary: `--accent-primary` bg, white text, `--accent-secondary` hover
-- Secondary: surface bg, `--border` border, `--fg` text
-- Ghost: transparent bg, accent text, `--accent-light` hover fill
-- Danger: `--danger` bg, white text
-- All sizes share the same weight (600), font-family, and letter-spacing
-- Focus state: 2px solid `--accent-primary` outline, 2px offset
+Four variants (`button-primary`, `button-secondary`, `button-ghost`, `button-danger`) across sm/default/lg sizes. All sizes share the same weight (`label-caps`, 600), font family, and letter-spacing.
+
+- **Primary:** `primary` background, `on-primary` text, `primary-hover` border and hover fill.
+- **Secondary:** `surface` background, `border` border, `text` text; hover shifts to `surface-hover`.
+- **Ghost:** transparent background, `primary` text; hover fills with `primary-container`.
+- **Danger:** `error` background, `on-primary` text.
+- **Focus:** 2px solid `primary` outline, 2px offset, on all variants.
+
+Sizes: sm (`4px 12px`, 13px text), default (`8px 24px`, 14px text), lg (`12px 28px`, 16px text).
 
 ### Inputs
 
-- Border: `--border`, 1px
-- Focus: `--accent-primary` border + `--accent-light` 3px outer glow
-- Error: `--danger` border + `--danger-bg` 3px outer glow
-- Label always above the input, never placeholder-only
-- Hint text below in `--muted` at 12px
+- Border: `border`, 1px; background `surface`.
+- Focus: border → `primary`, plus a `shadow-focus` outer glow.
+- Error: border → `error`, plus an `error-container` outer glow.
+- Label always sits above the input, never placeholder-only. Hint text sits below in `muted` at 12px.
 
 ### Badges
 
-- Status badges: tinted bg + tinted text + tinted border (3-layer match)
-- Dot indicator: 6px circle matching the status color
-- Data badges: neutral bg/text/border, mono font
-- Never use more than one status color on the same screen
+- Status badges (`badge-primary`/`success`/`warning`/`error`/`info`): tinted background + tinted text + tinted border, all from the same semantic family.
+- Dot indicator: 6px circle matching the status color.
+- Data badges: neutral background/text/border, mono font (`caption`).
+- Never use more than one status color on the same screen.
+- **Known gap:** the current `success`/`warning`/`error`/`info` text-on-container pairs fall below WCAG AA (4.5:1) — see `npm run design:lint`. Don't copy these pairs into new components; tighten the tint or darken the text if you touch this area.
+
+### Cards
+
+Two patterns:
+
+1. **Standalone card:** `surface` background, `border`, `rounded.lg`, `spacing.xl` padding, `shadow-sm`.
+2. **List card:** rows of `list-card-row` separated by `border-subtle`, `list-card-row-hover` background on hover.
 
 ### Tables
 
-- Header: uppercase + tracking (`+0.06em`) in `--muted`, 2px bottom border
-- Data rows: `--border-subtle` bottom border, 1px
-- Hover: `--surface-hover` on the row, not just the cell
-- Mono font for all IDs, hashes, numeric data in the body
-- No row striping — borders provide enough visual separation
-- Tabular numerics via `font-variant-numeric: tabular-nums` (for numeric columns)
+- Header (`table-header`): uppercase `label-caps` in `muted`, 2px `border` bottom border.
+- Data rows: `border-subtle` bottom border, 1px.
+- Hover: `surface-hover` on the full row, not just the cell.
+- Mono font for all IDs, hashes, and numeric data in the body; numeric columns use `font-variant-numeric: tabular-nums`.
+- No row striping — borders provide enough visual separation.
 
 ### Navigation
 
-- Top nav bar: bordered container with brand mark + links
-- Sidebar nav: left border indicator on active item, grouped with section titles
-- Tabs: bottom border indicator, accent-primary on active
+- **Nav bar:** bordered `surface` container with brand mark + links, `rounded.lg`, `shadow-sm`.
+- **Sidebar:** fixed-width `surface` panel with a right border; active item gets a 2px `primary` left border; sections grouped under `label-caps` group titles.
+- **Tabs:** bottom border indicator, `tab-active` gets `primary` underline plus 600 weight.
 
----
+### Toggle switch & theme bar
 
-## 6. Dark Mode Architecture
+- Track: `toggle-track` background (`border`), pill radius; checked state uses `toggle-track-active` (`primary`).
+- Thumb: white circle, `shadow-sm`, slides on toggle.
+- Theme bar: floating `surface` container, `rounded.xl`, `shadow-md`; active toggle button uses `primary` text color.
 
-Dark mode is a **complete override**, not an inversion. Key principles:
+## Do's and Don'ts
 
-- Background: `oklch(14% 0.01 250)` — not pure black (#000). Pure black causes vibration and eye strain.
-- Borders: `rgba(255, 255, 255, 0.08)` — semi-transparent white, not dark values. Dark-on-dark borders are invisible at small sizes.
-- Foreground: `oklch(94% 0.01 240)` — not pure white (#fff). Pure white on dark backgrounds causes eye strain.
-- Shadows: higher opacity (0.3–0.5 vs 0.06–0.12) because dark surfaces suppress subtle shadows.
+**Do:**
 
-Add `class="theme-dark"` to `<body>` or `<html>` to activate. The `dark.css` file selectively overrides only the tokens that need dark-mode values.
+- Use the red accent on primary CTAs and active/selected states.
+- Keep surfaces clean with light borders; reserve shadows for overlays.
+- Let data density do the work — dense tables and forms are the point, not a flaw.
+- Pair Inter (display/headings) with the system-ui body stack.
+- Use monospace for all code, IDs, hashes, and tabular/numeric data.
+- Map every visual decision to a token; add new tokens to `tokens/light.css` and `tokens/dark.css` together before using them anywhere.
 
----
+**Don't:**
 
-## 7. Accessibility
-
-- **Contrast minimums:**
-  - Body text (≤16px): 4.5:1 against background
-  - Large text (>18px or 14px bold): 3:1 against background
-  - UI components against adjacent surfaces: 3:1
-- **Focus states:** all interactive elements must have visible `focus-visible` styles
-- **Touch targets:** minimum 44×44px for all buttons, links, and controls
-- **Semantic HTML:** use `<button>`, `<nav>`, `<main>`, `<section>`, not `<div>` with `onclick`
-
----
-
-## 8. File Structure Guide
-
-When adding new files to the design system:
-
-```
-design-system/
-├── tokens/
-│   ├── light.css        ← tokens added HERE first
-│   └── dark.css         ← then mirrored here
-├── components/
-│   └── components.css   ← component classes go here
-├── DESIGN.md            ← update rules here when they change
-└── brand-spec.md        ← don't edit without approval
-```
-
-1. New color → add to `tokens/light.css` and `tokens/dark.css` first
-2. New component class → add to `components/components.css`
-3. New rule/principle → add to `DESIGN.md`
-4. Test: open `style-guide.html`, verify component renders in both themes
-
----
-
-## 9. Versioning
-
-This design system follows semantic versioning:
-
-- `MAJOR` — backward-incompatible token changes (e.g., renaming `--accent-primary`)
-- `MINOR` — new tokens or components added
-- `PATCH` — bug fixes to existing tokens or component styles
-
-When updating tokens, notify all product teams before the change takes effect.
-
----
-
-## 10. Glossary (for back-end devs)
-
-| Term | What it means | Example |
-|---|---|---|
-| **Design token** | A named CSS variable for a visual decision | `var(--accent-primary)` |
-| **OKLCH** | A perceptually uniform color format | `oklch(52% 0.21 23)` = BiglerNet red |
-| **Chroma** | Color intensity/saturation in OKLCH | Higher = more vivid |
-| **Hue** | Color angle (0–360°) in OKLCH | 23° = red, 150° = green, 230° = blue |
-| **Semantic color** | A color named for its meaning, not its hue | `--danger` (could be any red) |
-| **Token scope** | Where a token's value is active | `:root` = everywhere, `.theme-dark` = dark mode only |
-| **CSS custom property** | The generic name for CSS variables | `--accent-primary` is a CSS custom property |
+- Use the red accent on more than two visible elements per screen.
+- Add decorative gradients, patterned backgrounds, or illustrated elements.
+- Use pure `#000`/`#fff` for backgrounds or text — use the near-black/near-white OKLCH neutrals instead.
+- Stack more than two typefaces (display + body, with mono for data).
+- Use font weight 700+ for body text — reserve 600 for headlines/labels, 450 for body.
+- Hardcode a color, spacing, or radius value that isn't already a token.

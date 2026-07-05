@@ -24,7 +24,8 @@
     "publish:github": "npm run build && npm publish --registry https://npm.pkg.github.com",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "design:lint": "designmd lint DESIGN.md"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "@biglernet:registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
+    "@google/design.md": "^0.3.0",
     "style-dictionary": "^5.5.0",
     "vitepress": "^1.6.4",
     "vue": "^3.5.39"
